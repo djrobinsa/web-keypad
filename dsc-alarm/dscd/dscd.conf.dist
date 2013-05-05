@@ -1,0 +1,446 @@
+##############################################################################
+#
+#  Copyright (c) 2009-2010, Adam Roach
+#  All rights reserved.
+#  
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions
+#  are met:
+#  
+#      * Redistributions of source code must retain the above copyright
+#        notice, this list of conditions and the following disclaimer.
+#  
+#      * Redistributions in binary form must reproduce the above copyright
+#        notice, this list of conditions and the following disclaimer in the
+#        documentation and/or other materials provided with the distribution.
+#  
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+#  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+#  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+#  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+#  HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+#  TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+#  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+#  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+#  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+#  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+##############################################################################
+
+
+############################################################################
+# Primary configuration information
+############################################################################
+[main]
+
+# Should we keep the alarm's clock synced with the system time?
+sync_time = true
+
+# What baud rate are we using to communicate with the IT-100?
+# Valid values are 9600, 19200, 38400, 57600, and 115200.
+# Pick the highest number that works for you without errors.
+baud = 115200
+
+# What serial port is the IT-100 connected to?
+device = /dev/ttyUSB0
+
+# Which localhost port do the commandline tools connect to?
+port = 53280
+
+# When we execute external commands, which shell should we use?
+shell = /bin/sh
+
+############################################################################
+# Override zone names (up to 64)
+# (Any zones not defined here will be read from alarm system)
+############################################################################
+[zones]
+1  = Zone 1
+2  = Zone 2
+3  = Zone 3
+4  = Zone 4
+5  = Zone 5
+6  = Zone 6
+7  = Zone 7
+8  = Zone 8
+
+############################################################################
+# Names for non-zone wireless devices
+############################################################################
+[wireless_keys]
+1 = Wireless Key 1
+2 = Wireless Key 2
+3 = Wireless Key 3
+4 = Wireless Key 4
+5 = Wireless Key 5
+6 = Wireless Key 6
+7 = Wireless Key 7
+8 = Wireless Key 8
+9 = Wireless Key 9
+10 = Wireless Key 10
+11 = Wireless Key 11
+12 = Wireless Key 12
+13 = Wireless Key 13
+14 = Wireless Key 14
+15 = Wireless Key 15
+16 = Wireless Key 16
+
+[wireless_keypads]
+1 = Handheld Keypad 1
+2 = Handheld Keypad 2
+3 = Handheld Keypad 3
+4 = Handheld Keypad 4
+
+############################################################################
+# What access code should we return when the system asks for one?
+# Can override on a paritition-by-partition basis
+############################################################################
+[access]
+default = 0000
+# 1 = 0000
+# 2 = 0000
+# 3 = 0000
+# 4 = 0000
+# 5 = 0000
+# 6 = 0000
+# 7 = 0000
+# 8 = 0000
+
+############################################################################
+# Override Partition names (up to 8)
+# (Any partitions not defined here will be read from alarm system)
+############################################################################
+[partitions]
+1 = Main Partition
+2 = Partition 2
+3 = Partition 3
+4 = Partition 4
+5 = Partition 5
+6 = Partition 6
+7 = Partition 7
+8 = Partition 8
+
+############################################################################
+# User names (should contain 42)
+############################################################################
+[users]
+1  = User 1
+2  = User 2
+3  = User 3
+4  = User 4
+5  = User 5
+6  = User 6
+7  = User 7
+8  = User 8
+9  = User 9
+10 = User 10
+11 = User 11
+12 = User 12
+13 = User 13
+14 = User 14
+15 = User 15
+16 = User 16
+17 = User 17
+18 = User 18
+19 = User 19
+20 = User 20
+21 = User 21
+22 = User 22
+23 = User 23
+24 = User 24
+25 = User 25
+26 = User 26
+27 = User 27
+28 = User 28
+29 = User 29
+30 = User 30
+31 = User 31
+32 = User 32
+33 = User 33
+34 = User 34
+35 = User 35
+36 = User 36
+37 = User 37
+38 = User 38
+39 = User 39
+40 = User 40
+41 = User 41
+42 = User 42
+
+############################################################################
+# Syslog configuration information
+############################################################################
+
+[syslog]
+
+####################
+# Which facility should we log to?
+#
+# This should generally be set to one of LOCAL0 through LOCAL7
+# However, the following values are also accepted:
+#
+#       AUTHPRIV  security/authorization messages
+#       CRON      clock daemon
+#       DAEMON    system daemons without separate facility value
+#       FTP       ftp daemon
+#       KERN      kernel messages
+#       LPR       line printer subsystem
+#       MAIL      mail subsystem
+#       NEWS      USENET news subsystem
+#       SYSLOG    messages generated internally by syslogd
+#       USER      generic user-level messages
+#       UUCP      UUCP subsystem
+
+facility = LOCAL2
+
+####################
+# What level should we log alarm events at?
+#
+# Valid values are:
+#       EMERG   - system is unusable
+#       ALERT   - action must be taken immediately
+#       CRIT    - critical conditions
+#       ERR     - error conditions
+#       WARNING - warning conditions
+#       NOTICE  - normal, but significant, condition
+#       INFO    - informational message
+#       DEBUG   - debug-level message
+#       NONE    - do not log
+
+# Commands sent to alarm system
+
+POLL                                        = DEBUG
+STATUS_REQUEST                              = DEBUG
+LABELS_REQUEST                              = DEBUG
+SET_TIME_AND_DATE                           = DEBUG
+COMMAND_OUTPUT_CONTROL                      = DEBUG
+PARTITION_ARM_CONTROL_AWAY                  = DEBUG
+PARTITION_ARM_CONTROL_STAY                  = DEBUG
+PARTITION_ARM_CONTROL_ARMED_NO_ENTRY_DELAY  = DEBUG
+PARTITION_ARM_CONTROL_WITH_CODE             = DEBUG
+PARTITION_DISARM_CONTROL_WITH_CODE          = DEBUG
+TIME_STAMP_CONTROL                          = DEBUG
+TIME_DATE_BROADCAST_CONTROL                 = DEBUG
+TEMPERATURE_BROADCAST_CONTROL               = DEBUG
+VIRTUAL_KEYPAD_CONTROL                      = DEBUG
+TRIGGER_PANIC_ALARM                         = DEBUG
+KEY_PRESSED                                 = DEBUG
+BAUD_RATE_CHANGE                            = DEBUG
+GET_TEMPERATURE_SET_POINT                   = DEBUG
+TEMPERATURE_CHANGE                          = DEBUG
+SAVE_TEMPERATURE_SETTING                    = DEBUG
+CODE_SEND                                   = DEBUG
+
+# Commands received from alarm system
+
+COMMAND_ACKNOWLEDGE                         = NONE
+COMMAND_ERROR                               = INFO
+SYSTEM_ERROR                                = INFO
+TIME_DATE_BROADCAST                         = INFO
+RING_DETECTED                               = INFO
+INDOOR_TEMPERATURE_BROADCAST                = INFO
+OUTDOOR_TEMPERATRURE_BROADCAST              = INFO
+THERMOSTAT_SET_POINTS                       = INFO
+BROADCAST_LABELS                            = NONE
+BAUD_RATE_SET                               = INFO
+ZONE_ALARM                                  = EMERG
+ZONE_ALARM_RESTORE                          = EMERG
+ZONE_TAMPER                                 = WARNING
+ZONE_TAMPER_RESTORE                         = WARNING
+ZONE_FAULT                                  = WARNING
+ZONE_FAULT_RESTORE                          = WARNING
+ZONE_OPEN                                   = WARNING
+ZONE_RESTORED                               = WARNING
+DURESS_ALARM                                = EMERG
+F_KEY_ALARM                                 = WARNING
+F_KEY_RESTORAL                              = WARNING
+A_KEY_ALARM                                 = WARNING
+A_KEY_RESTORAL                              = WARNING
+P_KEY_ALARM                                 = WARNING
+P_KEY_RESTORAL                              = WARNING
+AUXILIARY_INPUT_ALARM                       = WARNING
+AUXILIARY_INPUT_ALARM_RESTORED              = WARNING
+PARTITION_READY                             = INFO
+PARTITION_NOT_READY                         = INFO
+PARTITION_ARMED_DESCRIPTIVE_MODE            = NOTICE
+PARTITION_IN_READY_TO_FORCE_ARM             = INFO
+PARTITION_IN_ALARM                          = ALERT
+PARTITION_DISARMED                          = INFO
+EXIT_DELAY_IN_PROGRESS                      = INFO
+ENTRY_DELAY_IN_PROGRESS                     = INFO
+KEYPAD_LOCKOUT                              = INFO
+KEYPAD_BLANKING                             = INFO
+COMMAND_OUTPUT_IN_PROGRESS                  = INFO
+INVALID_ACCESS_CODE                         = INFO
+FUNCTION_NOT_AVAILABLE                      = INFO
+FAIL_TO_ARM                                 = INFO
+PARTITION_BUSY                              = INFO
+USER_CLOSING                                = INFO
+SPECIAL_CLOSING                             = INFO
+PARTIAL_CLOSING                             = INFO
+USER_OPENING                                = NOTICE
+SPECIAL_OPENING                             = NOTICE
+PANEL_BATTERY_TROUBLE                       = WARNING
+PANEL_BATTERY_TROUBLE_RESTORE               = WARNING
+PANEL_AC_TROUBLE                            = WARNING
+PANEL_AC_RESTORE                            = WARNING
+SYSTEM_BELL_TROUBLE                         = WARNING
+SYSTEM_BELL_TROUBLE_RESTORAL                = WARNING
+TLM_LINE_1_TROUBLE                          = WARNING
+TLM_LINE_1_TROUBLE_RESTORED                 = WARNING
+TLM_LINE_2_TROUBLE                          = WARNING
+TLM_LINE_2_TROUBLE_RESTORED                 = WARNING
+FTC_TROUBLE                                 = ERR
+BUFFER_NEAR_FULL                            = INFO
+GENERAL_DEVICE_LOW_BATTERY                  = WARNING
+GENERAL_DEVICE_LOW_BATTERY_RESTORE          = WARNING
+WIRELESS_KEY_LOW_BATTERY_TROUBLE            = WARNING
+RESTORE                                     = WARNING
+HANDHELD_KEYPAD_LOW_BATTERY_TROUBLE         = WARNING
+RESTORED                                    = WARNING
+GENERAL_SYSTEM_TAMPER                       = WARNING
+GENERAL_SYSTEM_TAMPER_RESTORE               = WARNING
+HOME_AUTOMATION_TROUBLE                     = WARNING
+HOME_AUTOMATION_TROUBLE_RESTORE             = WARNING
+TROUBLE_STATUS_LED_ON                       = WARNING
+TROUBLE_STATUS_RESTORE_LED_OFF              = WARNING
+FIRE_TROUBLE_ALARM                          = WARNING
+FIRE_TROUBLE_ALARM_RESTORED                 = WARNING
+CODE_REQUIRED                               = INFO
+LCD_UPDATE                                  = NONE
+LCD_CURSOR                                  = NONE
+LED_STATUS                                  = NONE
+BEEP_STATUS                                 = NONE
+TONE_STATUS                                 = NONE
+BUZZER_STATUS                               = NONE
+DOOR_CHIME_STATUS                           = NONE
+SOFTWARE_VERSION                            = INFO
+
+############################################################################
+# Actions to take when events happen
+# Should contain a command or script to be evaluated by the shell
+# specified in the [main] section (above).
+#
+# Commands can contain the following strings, which are replaced as shown:
+#
+#   %c              - The command name
+#   %n              - The command code as a number
+#   %1i through %9i - Integer representation of parameters 1 through 9
+#   %1s through %9s - String representation of parameters 1 through 9
+#   %1l through %9l - Keypad status for LEDs 1 through 9
+#   %d              - Current contents of LCD display
+#   %z              - 64-bit hex representation of open zones
+#  
+############################################################################
+
+[actions]
+# Commands sent to alarm system
+
+POLL                                        =
+STATUS_REQUEST                              =
+LABELS_REQUEST                              =
+SET_TIME_AND_DATE                           =
+COMMAND_OUTPUT_CONTROL                      =
+PARTITION_ARM_CONTROL_AWAY                  =
+PARTITION_ARM_CONTROL_STAY                  =
+PARTITION_ARM_CONTROL_ARMED_NO_ENTRY_DELAY  =
+PARTITION_ARM_CONTROL_WITH_CODE             =
+PARTITION_DISARM_CONTROL_WITH_CODE          =
+TIME_STAMP_CONTROL                          =
+TIME_DATE_BROADCAST_CONTROL                 =
+TEMPERATURE_BROADCAST_CONTROL               =
+VIRTUAL_KEYPAD_CONTROL                      =
+TRIGGER_PANIC_ALARM                         =
+KEY_PRESSED                                 =
+BAUD_RATE_CHANGE                            =
+GET_TEMPERATURE_SET_POINT                   =
+TEMPERATURE_CHANGE                          =
+SAVE_TEMPERATURE_SETTING                    =
+CODE_SEND                                   =
+
+# Commands received from alarm system
+
+COMMAND_ACKNOWLEDGE                         =
+COMMAND_ERROR                               =
+SYSTEM_ERROR                                =
+TIME_DATE_BROADCAST                         =
+RING_DETECTED                               =
+INDOOR_TEMPERATURE_BROADCAST                =
+OUTDOOR_TEMPERATRURE_BROADCAST              =
+THERMOSTAT_SET_POINTS                       =
+BROADCAST_LABELS                            =
+BAUD_RATE_SET                               =
+ZONE_ALARM                                  = echo "Alarm: %2s" | /usr/bin/mail -s "[dscd] Alarm: %2s" root
+ZONE_ALARM_RESTORE                          = echo "Alarm Restore: %2s" | /usr/bin/mail -s "[dscd] Alarm Restore: %2s" root
+ZONE_TAMPER                                 =
+ZONE_TAMPER_RESTORE                         =
+ZONE_FAULT                                  =
+ZONE_FAULT_RESTORE                          =
+ZONE_OPEN                                   =
+ZONE_RESTORED                               =
+DURESS_ALARM                                = echo "Duress Alarm: %2s" | /usr/bin/mail -s "[dscd] Duress Alarm: %2s" root
+F_KEY_ALARM                                 =
+F_KEY_RESTORAL                              =
+A_KEY_ALARM                                 =
+A_KEY_RESTORAL                              =
+P_KEY_ALARM                                 =
+P_KEY_RESTORAL                              =
+AUXILIARY_INPUT_ALARM                       =
+AUXILIARY_INPUT_ALARM_RESTORED              =
+PARTITION_READY                             =
+PARTITION_NOT_READY                         =
+PARTITION_ARMED_DESCRIPTIVE_MODE            =
+PARTITION_IN_READY_TO_FORCE_ARM             =
+PARTITION_IN_ALARM                          =
+PARTITION_DISARMED                          =
+EXIT_DELAY_IN_PROGRESS                      =
+ENTRY_DELAY_IN_PROGRESS                     =
+ENTRY_DELAY_IN_PROGRESS                     =
+KEYPAD_LOCKOUT                              =
+KEYPAD_BLANKING                             =
+COMMAND_OUTPUT_IN_PROGRESS                  =
+INVALID_ACCESS_CODE                         =
+FUNCTION_NOT_AVAILABLE                      =
+FAIL_TO_ARM                                 =
+PARTITION_BUSY                              =
+USER_CLOSING                                = echo "Partition %1s armed by %2s" | mail -s "[dscd] Partition %1s armed by %2s" root
+SPECIAL_CLOSING                             = echo "Partition %1s armed" | mail -s "[dscd] Partition %1s armed" root
+PARTIAL_CLOSING                             = echo "Partition %1s armed" | mail -s "[dscd] Partition %1s armed with bypass (open zones: %z)" root
+USER_OPENING                                = echo "Partition %1s disarmed by %2s" | mail -s "[dscd] Partition %1s disarmed by %2s" root
+SPECIAL_OPENING                             = echo "Partition %1s disarmed" | mail -s "[dscd] Partition %1s disarmed" root
+PANEL_BATTERY_TROUBLE                       =
+PANEL_BATTERY_TROUBLE_RESTORE               =
+PANEL_AC_TROUBLE                            =
+PANEL_AC_RESTORE                            =
+SYSTEM_BELL_TROUBLE                         =
+SYSTEM_BELL_TROUBLE_RESTORAL                =
+TLM_LINE_1_TROUBLE                          =
+TLM_LINE_1_TROUBLE_RESTORED                 =
+TLM_LINE_2_TROUBLE                          =
+TLM_LINE_2_TROUBLE_RESTORED                 =
+FTC_TROUBLE                                 =
+BUFFER_NEAR_FULL                            =
+GENERAL_DEVICE_LOW_BATTERY                  =
+GENERAL_DEVICE_LOW_BATTERY_RESTORE          =
+WIRELESS_KEY_LOW_BATTERY_TROUBLE            =
+RESTORE                                     =
+HANDHELD_KEYPAD_LOW_BATTERY_TROUBLE         =
+RESTORED                                    =
+GENERAL_SYSTEM_TAMPER                       =
+GENERAL_SYSTEM_TAMPER_RESTORE               =
+HOME_AUTOMATION_TROUBLE                     =
+HOME_AUTOMATION_TROUBLE_RESTORE             =
+TROUBLE_STATUS_LED_ON                       =
+TROUBLE_STATUS_RESTORE_LED_OFF              =
+FIRE_TROUBLE_ALARM                          =
+FIRE_TROUBLE_ALARM_RESTORED                 =
+CODE_REQUIRED                               =
+LCD_UPDATE                                  =
+LCD_CURSOR                                  =
+LED_STATUS                                  =
+BEEP_STATUS                                 =
+TONE_STATUS                                 =
+BUZZER_STATUS                               =
+DOOR_CHIME_STATUS                           =
+SOFTWARE_VERSION                            =

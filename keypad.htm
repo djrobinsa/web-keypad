@@ -1,0 +1,614 @@
+<Html><Head></Head><Title>C:\Users\RobinL.ELVEY\Desktop\web-keypad\keypad.cgi</Title><Body><font face="Times New Roman">
+<Body BGCOLOR="#FFFFFF">
+<font face="Courier New"><font SIZE="2"><font color="#000000"><font face="Courier New"><font SIZE="2"><I><font color="#000080">#!/usr/bin/perl<BR>
+</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">##############################################################################</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2009-2010,&nbsp;Adam&nbsp;Roach</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;All&nbsp;rights&nbsp;reserved.</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;Redistribution&nbsp;and&nbsp;use&nbsp;in&nbsp;source&nbsp;and&nbsp;binary&nbsp;forms,&nbsp;with&nbsp;or&nbsp;without</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;modification,&nbsp;are&nbsp;permitted&nbsp;provided&nbsp;that&nbsp;the&nbsp;following&nbsp;conditions</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;are&nbsp;met:</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Redistributions&nbsp;of&nbsp;source&nbsp;code&nbsp;must&nbsp;retain&nbsp;the&nbsp;above&nbsp;copyright</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notice,&nbsp;this&nbsp;list&nbsp;of&nbsp;conditions&nbsp;and&nbsp;the&nbsp;following&nbsp;disclaimer.</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Redistributions&nbsp;in&nbsp;binary&nbsp;form&nbsp;must&nbsp;reproduce&nbsp;the&nbsp;above&nbsp;copyright</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notice,&nbsp;this&nbsp;list&nbsp;of&nbsp;conditions&nbsp;and&nbsp;the&nbsp;following&nbsp;disclaimer&nbsp;in&nbsp;the</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;documentation&nbsp;and/or&nbsp;other&nbsp;materials&nbsp;provided&nbsp;with&nbsp;the&nbsp;distribution.</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;THIS&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;BY&nbsp;THE&nbsp;COPYRIGHT&nbsp;HOLDERS&nbsp;AND&nbsp;CONTRIBUTORS</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;&quot;AS&nbsp;IS&quot;&nbsp;AND&nbsp;ANY&nbsp;EXPRESS&nbsp;OR&nbsp;IMPLIED&nbsp;WARRANTIES,&nbsp;INCLUDING,&nbsp;BUT&nbsp;NOT</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;LIMITED&nbsp;TO,&nbsp;THE&nbsp;IMPLIED&nbsp;WARRANTIES&nbsp;OF&nbsp;MERCHANTABILITY&nbsp;AND&nbsp;FITNESS&nbsp;FOR</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE&nbsp;ARE&nbsp;DISCLAIMED.&nbsp;IN&nbsp;NO&nbsp;EVENT&nbsp;SHALL&nbsp;THE&nbsp;COPYRIGHT</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;HOLDER&nbsp;OR&nbsp;CONTRIBUTORS&nbsp;BE&nbsp;LIABLE&nbsp;FOR&nbsp;ANY&nbsp;DIRECT,&nbsp;INDIRECT,&nbsp;INCIDENTAL,</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;SPECIAL,&nbsp;EXEMPLARY,&nbsp;OR&nbsp;CONSEQUENTIAL&nbsp;DAMAGES&nbsp;(INCLUDING,&nbsp;BUT&nbsp;NOT&nbsp;LIMITED</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;TO,&nbsp;PROCUREMENT&nbsp;OF&nbsp;SUBSTITUTE&nbsp;GOODS&nbsp;OR&nbsp;SERVICES;&nbsp;LOSS&nbsp;OF&nbsp;USE,&nbsp;DATA,&nbsp;OR</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;PROFITS;&nbsp;OR&nbsp;BUSINESS&nbsp;INTERRUPTION)&nbsp;HOWEVER&nbsp;CAUSED&nbsp;AND&nbsp;ON&nbsp;ANY&nbsp;THEORY&nbsp;OF</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;LIABILITY,&nbsp;WHETHER&nbsp;IN&nbsp;CONTRACT,&nbsp;STRICT&nbsp;LIABILITY,&nbsp;OR&nbsp;TORT&nbsp;(INCLUDING</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;NEGLIGENCE&nbsp;OR&nbsp;OTHERWISE)&nbsp;ARISING&nbsp;IN&nbsp;ANY&nbsp;WAY&nbsp;OUT&nbsp;OF&nbsp;THE&nbsp;USE&nbsp;OF&nbsp;THIS</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#&nbsp;&nbsp;SOFTWARE,&nbsp;EVEN&nbsp;IF&nbsp;ADVISED&nbsp;OF&nbsp;THE&nbsp;POSSIBILITY&nbsp;OF&nbsp;SUCH&nbsp;DAMAGE.</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">##############################################################################<BR>
+<BR>
+</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">$keypad_model&nbsp;=&nbsp;&amp;LCD5500Z;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">#$keypad_model&nbsp;=&nbsp;&amp;PK5500;<BR>
+</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">use</font></B></font></font>&nbsp;IO::Socket;<BR>
+<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">$query&nbsp;=&nbsp;$ENV{</font></font></font><font color="#800000">'QUERY_STRING'</font><font color="#000000">};</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">$path&nbsp;=&nbsp;$ENV{</font></font></font><font color="#800000">'PATH_INFO'</font><font color="#000000">};</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">($</font></font></font><font color="#008000">0</font><font color="#000000">&nbsp;=~&nbsp;/([^\/]*)$/)&nbsp;&amp;&amp;&nbsp;($script=$</font><font color="#008000">1</font><font color="#000000">);<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($query&nbsp;=~&nbsp;/^new/)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$keypad_model&nbsp;=&nbsp;&amp;PK5500;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">elsif</font></B></font></font>&nbsp;($query&nbsp;=~&nbsp;/^old/)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$keypad_model&nbsp;=&nbsp;&amp;LCD5500Z;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($keypad_model&nbsp;==&nbsp;&amp;PK5500)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$normal&nbsp;=&nbsp;</font></font></font><font color="#800000">'PK5500&nbsp;Default.png'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$active&nbsp;=&nbsp;</font></font></font><font color="#800000">'PK5500&nbsp;Active.png'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">else</font></B></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$normal&nbsp;=&nbsp;</font></font></font><font color="#800000">'DSC&nbsp;Keypad.png'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$active&nbsp;=&nbsp;</font></font></font><font color="#800000">'DSC&nbsp;Keypad&nbsp;Active.png'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($path&nbsp;=~&nbsp;/^\/([^\/]*png)$/)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;Content-Type:&nbsp;image/png\n\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;exec(</font></font></font><font color="#800000">'cat'</font><font color="#000000">,$</font><font color="#008000">1</font><font color="#000000">);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($path&nbsp;<B>eq</B>&nbsp;<font color="#800000">'/status'</font><font color="#000000">)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&amp;returnKeypadStatus;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;exit;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($path&nbsp;=~&nbsp;/\/kp(up|down)\/(.*)/)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;Content-Type:&nbsp;text/plain\n\n$2&nbsp;$1\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&amp;processKey($</font></font></font><font color="#008000">1</font><font color="#000000">,$</font><font color="#008000">2</font><font color="#000000">);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;exit;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">if</font></B></font></font>&nbsp;($path&nbsp;<B>eq</B>&nbsp;<font color="#800000">''</font><font color="#000000">)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&amp;drawKeypad;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">sub</font></B></font></font>&nbsp;returnKeypadStatus<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;Content-Type:&nbsp;text/plain\n\n&quot;</font><font color="#000000">;<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>if</B>&nbsp;($query&nbsp;=~&nbsp;/etag=([<font color="#008000">0</font><font color="#000000">-</font><font color="#008000">9</font><font color="#000000">]+)/)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;$etag&nbsp;=&nbsp;$</font></font></font><font color="#008000">1</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>my</B>&nbsp;$sock&nbsp;=&nbsp;new&nbsp;IO::Socket::INET(PeerAddr&nbsp;=&gt;&nbsp;<font color="#800000">'localhost'</font><font color="#000000">,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PeerPort&nbsp;=&gt;&nbsp;</font></font></font><font color="#008000">53280</font><font color="#000000">,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proto&nbsp;=&gt;&nbsp;</font></font></font><font color="#800000">'tcp'</font><font color="#000000">);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$cmd&nbsp;=&nbsp;</font></font></font><font color="#800000">&quot;?$etag\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;$sock&nbsp;$cmd;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;sysread($sock,&nbsp;$buffer,&nbsp;length($cmd));</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;sysread($sock,&nbsp;$buffer,&nbsp;</font></font></font><font color="#008000">256</font><font color="#000000">);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;close&nbsp;($sock);</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;$buffer&nbsp;=~&nbsp;s/[\r\n]//g;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;$buffer;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">sub</font></B></font></font>&nbsp;processKey<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>my</B>&nbsp;($state,$key)&nbsp;=&nbsp;@_;<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>my</B>&nbsp;$sock&nbsp;=&nbsp;new&nbsp;IO::Socket::INET(PeerAddr&nbsp;=&gt;&nbsp;<font color="#800000">'localhost'</font><font color="#000000">,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PeerPort&nbsp;=&gt;&nbsp;</font></font></font><font color="#008000">53280</font><font color="#000000">,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proto&nbsp;=&gt;&nbsp;</font></font></font><font color="#800000">'tcp'</font><font color="#000000">);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>if</B>&nbsp;($state&nbsp;=~&nbsp;/up/i)&nbsp;{&nbsp;$cmd&nbsp;=&nbsp;<font color="#800000">&quot;^\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;=~&nbsp;/KP([<font color="#008000">0</font><font color="#000000">-</font><font color="#008000">9</font><font color="#000000">])/)&nbsp;{&nbsp;$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;$1\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPStar'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;*\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPHash'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;#\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPStay'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;a\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPAway'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;b\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPChime'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;c\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPReset'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;d\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPExit'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;e\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPLeft'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;&lt;\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPRight'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;&gt;\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPFire'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;F\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPAmbulance'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;A\n&quot;</font><font color="#000000">;&nbsp;}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>elsif</B>&nbsp;($key&nbsp;<B>eq</B>&nbsp;<font color="#800000">'KPPanic'</font><font color="#000000">)&nbsp;{$cmd&nbsp;=&nbsp;</font><font color="#800000">&quot;P\n&quot;</font><font color="#000000">;&nbsp;}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;$sock&nbsp;$cmd;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;sysread($sock,&nbsp;$buffer,&nbsp;length($cmd));</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;close&nbsp;($sock);</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><I><font color="#000080">###########################################################################<BR>
+</font></I></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">sub</font></B></font></font>&nbsp;drawKeypad<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>my</B>&nbsp;(@items);<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>if</B>&nbsp;($keypad_model&nbsp;==&nbsp;&amp;PK5500)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;@items&nbsp;=</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;(</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Backlight&quot;</font><font color="#000000">,</font><font color="#008000">112</font><font color="#000000">,</font><font color="#008000">54</font><font color="#000000">,</font><font color="#008000">343</font><font color="#000000">,</font><font color="#008000">83</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Memory&quot;</font><font color="#000000">&nbsp;,</font><font color="#008000">50</font><font color="#000000">,</font><font color="#008000">62</font><font color="#000000">,</font><font color="#008000">60</font><font color="#000000">,</font><font color="#008000">17</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Bypass&quot;</font><font color="#000000">&nbsp;,</font><font color="#008000">50</font><font color="#000000">,</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">,</font><font color="#008000">60</font><font color="#000000">,</font><font color="#008000">17</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Fire&quot;</font><font color="#000000">&nbsp;&nbsp;&nbsp;,</font><font color="#008000">50</font><font color="#000000">,</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">,</font><font color="#008000">60</font><font color="#000000">,</font><font color="#008000">17</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Program&quot;</font><font color="#000000">,</font><font color="#008000">50</font><font color="#000000">,</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">+</font><font color="#008000">17</font><font color="#000000">,</font><font color="#008000">60</font><font color="#000000">,</font><font color="#008000">17</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Ready&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;</font><font color="#008000">468</font><font color="#000000">,&nbsp;</font><font color="#008000">59</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Armed&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;</font><font color="#008000">468</font><font color="#000000">,&nbsp;</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">15</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Trouble&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">468</font><font color="#000000">,&nbsp;</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">16</font><font color="#000000">+</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;AC&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">468</font><font color="#000000">,&nbsp;</font><font color="#008000">62</font><font color="#000000">+</font><font color="#008000">16</font><font color="#000000">+</font><font color="#008000">16</font><font color="#000000">+</font><font color="#008000">16</font><font color="#000000">+</font><font color="#008000">4</font><font color="#000000">,&nbsp;</font><font color="#008000">17</font><font color="#000000">,&nbsp;</font><font color="#008000">18</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP1&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP2&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">+</font><font color="#008000">63</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">,&nbsp;</font><font color="#008000">56</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP3&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">+</font><font color="#008000">126</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP4&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP5&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">271</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">56</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP6&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">334</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP7&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP8&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">271</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">56</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP9&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">334</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPStar&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">208</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">44</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP0&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">271</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">44</font><font color="#000000">,&nbsp;</font><font color="#008000">56</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPHash&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">334</font><font color="#000000">,&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">44</font><font color="#000000">,&nbsp;</font><font color="#008000">55</font><font color="#000000">,&nbsp;</font><font color="#008000">24</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPStay&quot;</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">428</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">,&nbsp;</font><font color="#008000">48</font><font color="#000000">,&nbsp;</font><font color="#008000">21</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPAway&quot;</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">428</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">,&nbsp;</font><font color="#008000">48</font><font color="#000000">,&nbsp;</font><font color="#008000">21</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPChime&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">428</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">,&nbsp;</font><font color="#008000">48</font><font color="#000000">,&nbsp;</font><font color="#008000">21</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPReset&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">428</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">,&nbsp;</font><font color="#008000">48</font><font color="#000000">,&nbsp;</font><font color="#008000">21</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPExit&quot;</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">428</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">191</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">+</font><font color="#008000">32</font><font color="#000000">,&nbsp;</font><font color="#008000">48</font><font color="#000000">,&nbsp;</font><font color="#008000">21</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPLeft&quot;</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">87</font><font color="#000000">,&nbsp;</font><font color="#008000">192</font><font color="#000000">,&nbsp;</font><font color="#008000">37</font><font color="#000000">,&nbsp;</font><font color="#008000">19</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPRight&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">132</font><font color="#000000">,&nbsp;</font><font color="#008000">192</font><font color="#000000">,&nbsp;</font><font color="#008000">37</font><font color="#000000">,&nbsp;</font><font color="#008000">19</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPFire&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">87</font><font color="#000000">,&nbsp;</font><font color="#008000">246</font><font color="#000000">,&nbsp;</font><font color="#008000">82</font><font color="#000000">,&nbsp;</font><font color="#008000">19</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPAmbulance&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">87</font><font color="#000000">,&nbsp;</font><font color="#008000">246</font><font color="#000000">+</font><font color="#008000">41</font><font color="#000000">,&nbsp;</font><font color="#008000">82</font><font color="#000000">,&nbsp;</font><font color="#008000">19</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPPanic&quot;</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">87</font><font color="#000000">,&nbsp;</font><font color="#008000">246</font><font color="#000000">+</font><font color="#008000">82</font><font color="#000000">,&nbsp;</font><font color="#008000">82</font><font color="#000000">,&nbsp;</font><font color="#008000">19</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;);</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;$lcdpos&nbsp;=&nbsp;</font></font></font><font color="#800000">'width:310px;height:75px;left:127;top:58px;'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>else</B><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;@items&nbsp;=</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;(</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Backlight&quot;</font><font color="#000000">,</font><font color="#008000">61</font><font color="#000000">,</font><font color="#008000">48</font><font color="#000000">,</font><font color="#008000">310</font><font color="#000000">,</font><font color="#008000">75</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Memory&quot;</font><font color="#000000">,</font><font color="#008000">388</font><font color="#000000">,</font><font color="#008000">40</font><font color="#000000">,</font><font color="#008000">70</font><font color="#000000">,</font><font color="#008000">20</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Bypass&quot;</font><font color="#000000">,</font><font color="#008000">388</font><font color="#000000">,</font><font color="#008000">62</font><font color="#000000">,</font><font color="#008000">70</font><font color="#000000">,</font><font color="#008000">20</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Fire&quot;</font><font color="#000000">,</font><font color="#008000">388</font><font color="#000000">,</font><font color="#008000">64</font><font color="#000000">+</font><font color="#008000">22</font><font color="#000000">,</font><font color="#008000">70</font><font color="#000000">,</font><font color="#008000">20</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Program&quot;</font><font color="#000000">,</font><font color="#008000">388</font><font color="#000000">,</font><font color="#008000">64</font><font color="#000000">+</font><font color="#008000">22</font><font color="#000000">+</font><font color="#008000">22</font><font color="#000000">,</font><font color="#008000">70</font><font color="#000000">,</font><font color="#008000">20</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Ready&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">230</font><font color="#000000">,&nbsp;</font><font color="#008000">155</font><font color="#000000">,&nbsp;</font><font color="#008000">12</font><font color="#000000">,&nbsp;</font><font color="#008000">20</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Armed&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">230</font><font color="#000000">+</font><font color="#008000">36</font><font color="#000000">,&nbsp;</font><font color="#008000">155</font><font color="#000000">,&nbsp;</font><font color="#008000">12</font><font color="#000000">,&nbsp;</font><font color="#008000">20</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;Trouble&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">230</font><font color="#000000">+</font><font color="#008000">36</font><font color="#000000">+</font><font color="#008000">35</font><font color="#000000">,&nbsp;</font><font color="#008000">155</font><font color="#000000">,&nbsp;</font><font color="#008000">12</font><font color="#000000">,&nbsp;</font><font color="#008000">20</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP1&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">&nbsp;,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP2&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">40</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP3&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">80</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP4&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP5&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">40</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP6&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">80</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP7&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP8&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">40</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP9&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">80</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPStar&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KP0&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">40</font><font color="#000000">,&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPHash&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">38</font><font color="#000000">+</font><font color="#008000">80</font><font color="#000000">,&nbsp;</font><font color="#008000">182</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">+</font><font color="#008000">46</font><font color="#000000">+</font><font color="#008000">45</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPStay&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">164</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">188</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPAway&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">164</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">188</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPChime&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">164</font><font color="#000000">,&nbsp;</font><font color="#008000">188</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPReset&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">164</font><font color="#000000">,&nbsp;</font><font color="#008000">188</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">+</font><font color="#008000">28</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPExit&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">164</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">188</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">+</font><font color="#008000">28</font><font color="#000000">+</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">,&nbsp;</font><font color="#008000">16</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPLeft&quot;</font><font color="#000000">,&nbsp;&nbsp;</font><font color="#008000">235</font><font color="#000000">,&nbsp;</font><font color="#008000">190</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">31</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPRight&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">272</font><font color="#000000">,&nbsp;</font><font color="#008000">190</font><font color="#000000">,&nbsp;</font><font color="#008000">29</font><font color="#000000">,&nbsp;</font><font color="#008000">31</font><font color="#000000">],<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPFire&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">235</font><font color="#000000">,&nbsp;</font><font color="#008000">240</font><font color="#000000">,&nbsp;</font><font color="#008000">66</font><font color="#000000">,&nbsp;</font><font color="#008000">31</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPAmbulance&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">235</font><font color="#000000">,&nbsp;</font><font color="#008000">240</font><font color="#000000">+</font><font color="#008000">35</font><font color="#000000">,&nbsp;</font><font color="#008000">66</font><font color="#000000">,&nbsp;</font><font color="#008000">31</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</font></font></font><font color="#800000">&quot;KPPanic&quot;</font><font color="#000000">,&nbsp;</font><font color="#008000">235</font><font color="#000000">,&nbsp;</font><font color="#008000">240</font><font color="#000000">+</font><font color="#008000">35</font><font color="#000000">+</font><font color="#008000">34</font><font color="#000000">,&nbsp;</font><font color="#008000">66</font><font color="#000000">,&nbsp;</font><font color="#008000">31</font><font color="#000000">],</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;);</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;$lcdpos&nbsp;=&nbsp;</font></font></font><font color="#800000">'width:310px;height:75px;left:61px;top:48px;'</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">print&nbsp;</font></font></font><font color="#800000">&lt;&lt;EOT</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">Content-Type:&nbsp;text/html<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">&lt;html&gt;&lt;head&gt;&lt;title&gt;Virtual&nbsp;Alarm&nbsp;Keypad&lt;/title&gt;&lt;/head&gt;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">&lt;body&gt;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">&lt;script&gt;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">/*&nbsp;---------------------------------------------------------------------------<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">Copyright&nbsp;(c)&nbsp;2009-2010,&nbsp;Adam&nbsp;Roach</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">All&nbsp;rights&nbsp;reserved.<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">Redistribution&nbsp;and&nbsp;use&nbsp;in&nbsp;source&nbsp;and&nbsp;binary&nbsp;forms,&nbsp;with&nbsp;or&nbsp;without</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">modification,&nbsp;are&nbsp;permitted&nbsp;provided&nbsp;that&nbsp;the&nbsp;following&nbsp;conditions</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">are&nbsp;met:<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">*&nbsp;Redistributions&nbsp;of&nbsp;source&nbsp;code&nbsp;must&nbsp;retain&nbsp;the&nbsp;above&nbsp;copyright</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">notice,&nbsp;this&nbsp;list&nbsp;of&nbsp;conditions&nbsp;and&nbsp;the&nbsp;following&nbsp;disclaimer.<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">*&nbsp;Redistributions&nbsp;in&nbsp;binary&nbsp;form&nbsp;must&nbsp;reproduce&nbsp;the&nbsp;above&nbsp;copyright</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">notice,&nbsp;this&nbsp;list&nbsp;of&nbsp;conditions&nbsp;and&nbsp;the&nbsp;following&nbsp;disclaimer&nbsp;in&nbsp;the</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">documentation&nbsp;and/or&nbsp;other&nbsp;materials&nbsp;provided&nbsp;with&nbsp;the&nbsp;distribution.<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">THIS&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;BY&nbsp;THE&nbsp;COPYRIGHT&nbsp;HOLDERS&nbsp;AND&nbsp;CONTRIBUTORS</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">&quot;AS&nbsp;IS&quot;&nbsp;AND&nbsp;ANY&nbsp;EXPRESS&nbsp;OR&nbsp;IMPLIED&nbsp;WARRANTIES,&nbsp;INCLUDING,&nbsp;BUT&nbsp;NOT</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">LIMITED&nbsp;TO,&nbsp;THE&nbsp;IMPLIED&nbsp;WARRANTIES&nbsp;OF&nbsp;MERCHANTABILITY&nbsp;AND&nbsp;FITNESS&nbsp;FOR</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">A&nbsp;PARTICULAR&nbsp;PURPOSE&nbsp;ARE&nbsp;DISCLAIMED.&nbsp;IN&nbsp;NO&nbsp;EVENT&nbsp;SHALL&nbsp;THE&nbsp;COPYRIGHT</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">HOLDER&nbsp;OR&nbsp;CONTRIBUTORS&nbsp;BE&nbsp;LIABLE&nbsp;FOR&nbsp;ANY&nbsp;DIRECT,&nbsp;INDIRECT,&nbsp;INCIDENTAL,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">SPECIAL,&nbsp;EXEMPLARY,&nbsp;OR&nbsp;CONSEQUENTIAL&nbsp;DAMAGES&nbsp;(INCLUDING,&nbsp;BUT&nbsp;NOT&nbsp;LIMITED</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">TO,&nbsp;PROCUREMENT&nbsp;OF&nbsp;SUBSTITUTE&nbsp;GOODS&nbsp;OR&nbsp;SERVICES;&nbsp;LOSS&nbsp;OF&nbsp;USE,&nbsp;DATA,&nbsp;OR</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">PROFITS;&nbsp;OR&nbsp;BUSINESS&nbsp;INTERRUPTION)&nbsp;HOWEVER&nbsp;CAUSED&nbsp;AND&nbsp;ON&nbsp;ANY&nbsp;THEORY&nbsp;OF</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">LIABILITY,&nbsp;WHETHER&nbsp;IN&nbsp;CONTRACT,&nbsp;STRICT&nbsp;LIABILITY,&nbsp;OR&nbsp;TORT&nbsp;(INCLUDING</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">NEGLIGENCE&nbsp;OR&nbsp;OTHERWISE)&nbsp;ARISING&nbsp;IN&nbsp;ANY&nbsp;WAY&nbsp;OUT&nbsp;OF&nbsp;THE&nbsp;USE&nbsp;OF&nbsp;THIS</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">SOFTWARE,&nbsp;EVEN&nbsp;IF&nbsp;ADVISED&nbsp;OF&nbsp;THE&nbsp;POSSIBILITY&nbsp;OF&nbsp;SUCH&nbsp;DAMAGE.<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">---------------------------------------------------------------------------&nbsp;*/<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;flashState&nbsp;=&nbsp;false;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;kpHttp&nbsp;=&nbsp;null;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;statusHttp&nbsp;=&nbsp;null;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;guiElementState&nbsp;=&nbsp;new&nbsp;Array;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;kpPending&nbsp;=&nbsp;new&nbsp;Array;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;lightNames&nbsp;=&nbsp;new&nbsp;Array(&nbsp;&quot;Ready&quot;,&nbsp;&quot;Armed&quot;,&nbsp;&quot;Memory&quot;,&nbsp;&quot;Bypass&quot;,</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">&quot;Trouble&quot;,&nbsp;&quot;Program&quot;,&nbsp;&quot;Fire&quot;,&nbsp;&quot;Backlight&quot;,&nbsp;&quot;AC&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;loadTimeout&nbsp;=&nbsp;setTimeout('loadFailed()',10000);</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">var&nbsp;keypadEtag&nbsp;=&nbsp;0;<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;loadFailed()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">setLcdText('Timeout&nbsp;Waiting','for&nbsp;Server');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp&nbsp;=&nbsp;null;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">loadTimeout&nbsp;=&nbsp;null;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">pollState();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;startTasks()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//setLcdText('Keypad&nbsp;Loaded','Awaiting&nbsp;Status');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">setInterval('flashLights()',1000);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">document.onkeydown&nbsp;=&nbsp;keyDown;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">document.onkeyup&nbsp;=&nbsp;keyUp;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">pollState();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;eventToKey(event)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;key&nbsp;=&nbsp;(String.fromCharCode(event.which));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">switch&nbsp;(key)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'0':&nbsp;case&nbsp;'1':&nbsp;case&nbsp;'2':&nbsp;case&nbsp;'3':&nbsp;case&nbsp;'4':</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'5':&nbsp;case&nbsp;'6':&nbsp;case&nbsp;'7':&nbsp;case&nbsp;'8':&nbsp;case&nbsp;'9':</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">return('KP'+key);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'S':&nbsp;return('KPStay');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'A':&nbsp;return('KPAway');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'C':&nbsp;return('KPChime');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'R':&nbsp;return('KPReset');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'E':&nbsp;return('KPExit');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'F':&nbsp;return('KPFire');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'M':&nbsp;return('KPAmbulance');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'P':&nbsp;return('KPPanic');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;'.':&nbsp;case&nbsp;'&gt;':&nbsp;return('KPRight');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;',':&nbsp;case&nbsp;'&lt;':&nbsp;return('KPLeft');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">default:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">switch&nbsp;(event.which)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;110:&nbsp;case&nbsp;32:&nbsp;return('KPHash');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;13:&nbsp;return('KPStar');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;37:&nbsp;case&nbsp;188:&nbsp;return('KPLeft');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;39:&nbsp;case&nbsp;190:&nbsp;return('KPRight');&nbsp;break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;96:&nbsp;case&nbsp;97:&nbsp;case&nbsp;98:&nbsp;case&nbsp;99:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;100:&nbsp;case&nbsp;101:&nbsp;case&nbsp;102:&nbsp;case&nbsp;103:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;104:&nbsp;case&nbsp;105:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">return('KP'+(event.which-96));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;setLcdText(''+event.which,key);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">return('');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;keyDown(event)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;key&nbsp;=&nbsp;eventToKey(event);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(key.length)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">keyPress(key);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;keyUp(event)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;key&nbsp;=&nbsp;eventToKey(event);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(key.length)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">keyRelease(key);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;displayState()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">try</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;ready&nbsp;=&nbsp;statusHttp.readyState;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;status&nbsp;=&nbsp;statusHttp.status;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;contents&nbsp;=&nbsp;statusHttp.responseText;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">catch&nbsp;(ex)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">return;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(ready&nbsp;!=&nbsp;4)&nbsp;{&nbsp;return;&nbsp;}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp&nbsp;=&nbsp;null;<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;state&nbsp;=&nbsp;null;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;i;<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">eval&nbsp;(&quot;state&nbsp;=&nbsp;&quot;&nbsp;+&nbsp;contents);<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">keypadEtag&nbsp;=&nbsp;state.shift();<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;Array&nbsp;order&nbsp;is:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;0=Ready,&nbsp;1=Armed,&nbsp;2=Memory,&nbsp;3=Bypass,&nbsp;4=Trouble,&nbsp;5=Program,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;6=Fire,&nbsp;7=Backlight,&nbsp;8=AC,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;9=LCD1,&nbsp;10=LCD2,</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;11=Cursor&nbsp;Type,&nbsp;12=Cursor&nbsp;Line,&nbsp;13=Cursor&nbsp;Column</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;14&nbsp;=&nbsp;Beep&nbsp;(duration&nbsp;in&nbsp;seconds)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;15,16,17&nbsp;=&nbsp;Tone&nbsp;(constant&nbsp;flag,&nbsp;number,&nbsp;interval)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;18&nbsp;=&nbsp;Buzz&nbsp;(duration&nbsp;in&nbsp;seconds)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//&nbsp;19&nbsp;=&nbsp;Door&nbsp;Chime<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;8;&nbsp;i++)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">guiElementState[lightNames[i]]&nbsp;=&nbsp;state[i];</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(state[i]&nbsp;&nbsp;==&nbsp;0)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[lightNames[i]].src='$script/$normal';</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">else&nbsp;if&nbsp;(state[i]&nbsp;==&nbsp;1)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[lightNames[i]].src='$script/$active';</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">setLcdText(state[9],state[10],state[11],state[12],state[13]);<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(loadTimeout)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">clearTimeout(loadTimeout);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">loadTimeout&nbsp;=&nbsp;null;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">setTimeout('pollState()',&nbsp;10);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;pollState()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp.onreadystatechange&nbsp;=&nbsp;displayState;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp.open(&quot;GET&quot;,&nbsp;&quot;$script/status?etag=&quot;&nbsp;+&nbsp;keypadEtag,&nbsp;true);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">statusHttp.send(null);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(loadTimeout&nbsp;==&nbsp;null)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">loadTimeout&nbsp;=&nbsp;setTimeout('loadFailed()',70000);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;flashLights()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;i;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">flashState&nbsp;=&nbsp;!flashState;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;8;&nbsp;i++)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(guiElementState[lightNames[i]]&nbsp;==&nbsp;2)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(flashState)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[lightNames[i]].src='$script/$active';</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[lightNames[i]].src='$script/$normal';</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;setLcdText(line1,line2,cursorType,cursorLine,cursorColumn)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">line1&nbsp;=&nbsp;(''+line1).replace(/&nbsp;/g,&nbsp;'\\u00A0');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">line1&nbsp;=&nbsp;(line1&nbsp;+&nbsp;&quot;\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0&quot;).substring(0,16);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">line2&nbsp;=&nbsp;(''+line2).replace(/&nbsp;/g,&nbsp;'\\u00A0');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">line2&nbsp;=&nbsp;(line2&nbsp;+&nbsp;&quot;\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0\\u00A0&quot;).substring(0,16);<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;cursorText&nbsp;=&nbsp;cursorLine?line2:line1;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;cursorLeft&nbsp;=&nbsp;cursorText.substring(0,cursorColumn);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;cursorMid&nbsp;=&nbsp;cursorText.substring(cursorColumn,&nbsp;cursorColumn+1);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;cursorRight&nbsp;=&nbsp;cursorText.substring(cursorColumn+1,16);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;cursorElement&nbsp;=&nbsp;null;<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">switch&nbsp;(cursorType)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;1:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">cursorElement&nbsp;=&nbsp;document.createElement(&quot;u&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">case&nbsp;2:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;color&nbsp;=&nbsp;guiElementState['Backlight']?'#CBFC68':'#C9C9C9';</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">cursorElement&nbsp;=&nbsp;document.createElement(&quot;span&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">cursorElement.setAttribute('style',</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">'color:'+color+';background-color:#000000');</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">break;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">default:</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">cursorElement&nbsp;=&nbsp;document.createElement(&quot;span&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">cursorElement.appendChild(document.createTextNode(cursorMid));<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;newSpan1&nbsp;=&nbsp;document.createElement(&quot;span&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(cursorType&nbsp;==&nbsp;0&nbsp;||&nbsp;cursorLine&nbsp;!=&nbsp;0)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan1.appendChild(document.createTextNode(line1));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan1.appendChild(document.createTextNode(cursorLeft));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan1.appendChild(cursorElement);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan1.appendChild(document.createTextNode(cursorRight));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;newSpan2&nbsp;=&nbsp;document.createElement(&quot;span&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(cursorType&nbsp;==&nbsp;0&nbsp;||&nbsp;cursorLine&nbsp;!=&nbsp;1)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan2.appendChild(document.createTextNode(line2));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan2.appendChild(document.createTextNode(cursorLeft));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan2.appendChild(cursorElement);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">newSpan2.appendChild(document.createTextNode(cursorRight));</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;lcd&nbsp;=&nbsp;document.getElementById(&quot;LCD&quot;);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">lcd.replaceChild(newSpan1,&nbsp;lcd.childNodes[0]);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">lcd.replaceChild(newSpan2,&nbsp;lcd.childNodes[2]);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;kpStatus()</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">try</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;ready&nbsp;=&nbsp;kpHttp.readyState;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;status&nbsp;=&nbsp;kpHttp.status;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">var&nbsp;contents&nbsp;=&nbsp;kpHttp.responseText;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">catch&nbsp;(ex)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">return;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(ready&nbsp;!=&nbsp;4)&nbsp;{&nbsp;return;&nbsp;}<BR>
+<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(kpPending.length&nbsp;&gt;&nbsp;0)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.onreadystatechange&nbsp;=&nbsp;kpStatus;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.open(&quot;GET&quot;,&nbsp;kpPending.shift(),&nbsp;true);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.send(null);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp&nbsp;=&nbsp;null;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">//setLcdText(status,contents);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;keyPress(name)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[name].src=&quot;$script/$active&quot;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">guiElementState[name]&nbsp;=&nbsp;true;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(kpHttp&nbsp;==&nbsp;null)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.onreadystatechange&nbsp;=&nbsp;kpStatus;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.open(&quot;GET&quot;,&nbsp;&quot;$script/kpdown/&quot;+name,&nbsp;true);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.send(null);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpPending.push(&quot;$script/kpdown/&quot;+name);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">function&nbsp;keyRelease(name)</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(guiElementState[name])</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">document.images[name].src=&quot;$script/$normal&quot;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">guiElementState[name]&nbsp;=&nbsp;false;<BR>
+</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">if&nbsp;(kpHttp&nbsp;==&nbsp;null)</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp&nbsp;=&nbsp;new&nbsp;XMLHttpRequest();</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.onreadystatechange&nbsp;=&nbsp;kpStatus;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.open(&quot;GET&quot;,&nbsp;&quot;$script/kpup/&quot;+name,&nbsp;true);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpHttp.send(null);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">else</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">{</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">kpPending.push(&quot;$script/kpup/&quot;+name);</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><font color="#800000">}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">&lt;/script&gt;<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">&lt;style&gt;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">#keypad&nbsp;{&nbsp;position:absolute;&nbsp;left:0px;top:0px&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">#keypad&nbsp;img&nbsp;{&nbsp;border:none;position:absolute;left:0px;top:0px&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">#LCD&nbsp;{display:block;overflow:hidden;position:absolute;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">$lcdpos</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">margin:0px&nbsp;0px;&nbsp;font-size:31px;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">font-family:&quot;Andale&nbsp;Mono&quot;,Courier,&quot;Courier&nbsp;New&quot;,Monospace}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">EOT</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">;<BR>
+<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;</font></font></font><B>foreach</B>&nbsp;$item&nbsp;(@items)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;($name,&nbsp;$x,&nbsp;$y,&nbsp;$width,&nbsp;$height)&nbsp;=&nbsp;@{$item};</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&lt;&lt;EOT</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">#$name&nbsp;{display:block;overflow:hidden;position:absolute;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><font color="#800000">width:${width}px;height:${height}px;left:${x}px;top:${y}px}</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">#$name&nbsp;img&nbsp;{&nbsp;border:none;position:absolute;left:-${x}px;top:-${y}px&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#800000">EOT</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;;</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;$actions&nbsp;=&nbsp;</font></font></font><font color="#800000">''</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><B>if</B>&nbsp;($name&nbsp;=~&nbsp;/^KP/)<BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$actions&nbsp;=&nbsp;</font></font></font><font color="#800000">&quot;onMouseDown='keyPress(\&quot;$name\&quot;)'&nbsp;onMouseUp='keyRelease(\&quot;$name\&quot;)'&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$actions&nbsp;.=&nbsp;</font></font></font><font color="#800000">&quot;onMouseOut='keyRelease(\&quot;$name\&quot;)'&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><B>else</B><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;{</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></font><I><font color="#000080">#$actions&nbsp;=&nbsp;&quot;onMouseOver='document.images[\&quot;$name\&quot;].src=\&quot;$script/$active\&quot;'&nbsp;onMouseOut='document.images[\&quot;$name\&quot;].src=\&quot;$script/$normal\&quot;'&quot;;</font></I><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;}</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;$body&nbsp;.=&nbsp;</font></font></font><font color="#800000">&quot;&lt;div&nbsp;id=\&quot;$name\&quot;&gt;&lt;img&nbsp;name='$name'&nbsp;$actions&nbsp;src='$script/$normal'/&gt;&lt;/div&gt;\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;&lt;/style&gt;\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;&lt;div&nbsp;id=\&quot;keypad\&quot;&gt;&lt;img&nbsp;src='$script/$normal'&nbsp;onLoad='startTasks()'/&gt;&lt;/div&gt;\n&quot;</font><font color="#000000">;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;$body;<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">&nbsp;&nbsp;print&nbsp;</font></font></font><font color="#800000">&quot;&lt;center&gt;&lt;div&nbsp;id='LCD'&gt;&lt;span&gt;Loading&nbsp;Keypad&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;span&gt;Please&nbsp;Wait...&amp;nbsp&lt;/span&gt;&lt;/div&gt;&lt;/center&gt;\n&lt;/body&gt;&lt;/html&gt;\n&quot;</font><BR>
+<font face="Courier New"><font SIZE="2"><font color="#000000">}<BR>
+</font></font></font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">sub</font></B></font></font>&nbsp;LCD5500Z&nbsp;{<B>return</B>&nbsp;<font color="#008000">1</font><font color="#000000">;}</font><BR>
+<font face="Courier New"><font SIZE="2"><B><font color="#000000">sub</font></B></font></font>&nbsp;PK5500&nbsp;{<B>return</B>&nbsp;<font color="#008000">2</font><font color="#000000">;}</font></font></font></font></Body></font></Body></Html>

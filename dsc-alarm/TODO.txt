@@ -1,0 +1,16 @@
+ 1. Sync baud on startup
+ 2. Drain buffer on startup
+ 3. Add commandline utilities to do common tasks (arm, disarm, etc).
+ 4. Fix handling of AccessCode, when needed
+ 5. Fix SendCommand to use classes to format message
+ 6. Add HUP handler to re-read configuration in-situ
+ 7. Fix time synchronization (hourly?)
+ 8. Add daemon handling (make default, flag to override)
+ 9. Add "make install" target, directory configuration
+10. Create "default" dscd.conf file, example scripts
+11. Document installation of keypad web interface
+12. Remove constants from It100; fix Config to use constants from 
+    Command.h instead of It100. (Note that commands 826 and 828
+    are very broken in the It100 class).
+13. Fix bug where the process takes 100% CPU when the serial device
+    goes away (e.g., USB is unplugged)

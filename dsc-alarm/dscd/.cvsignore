@@ -1,0 +1,7 @@
+# use this by doing " svn propset svn:ignore -F .cvsignore . "
+\.*\.d
+dscd
+old
+dscd.conf
+
+
